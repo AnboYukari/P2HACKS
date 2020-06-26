@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html> 
+<html lang="ja"> 
+<head> 
+<meta charset=utf-8>
+    
+<title>冷蔵庫</title>
+    
+<style>
+#fruits {
+	/*単なるスタイリング*/
+height:100px auto; margin:auto; margin-bottom:0; background-color:#FF9966; border:1px solid #cc3333; overflow-y: scroll;
+box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+}
+#dropbox {
+	/*単なるスタイリング*/
+	width:530px; height:100px; margin:auto; margin-bottom:0; background-color:#f5f5f5; border:2px solid #c0c0c0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+	/*以下はwebkit系ブラウザでドラッグ＆ドロップを動かすための指定（ブラウザのサポートが進めば、必要なくなると思われます）*/
+	-khtml-user-drag: element;
+}
+</style>
+    
+<script>
+    
+    var syokuzai = new Array(22);
+    var i = 0;
+    
+/***** ドラッグ開始時の処理 *****/
+function f_dragstart(event){
+	//ドラッグするデータのid名をDataTransferオブジェクトにセット
+	event.dataTransfer.setData("text", event.target.id);
+}
+
+/***** ドラッグ要素がドロップ要素に重なっている間の処理 *****/
+function f_dragover(event){
+	//dragoverイベントをキャンセルして、ドロップ先の要素がドロップを受け付けるようにする
+	event.preventDefault();
+}
+
+/***** ドロップ時の処理 *****/
+function f_drop(event){
+	//ドラッグされたデータのid名をDataTransferオブジェクトから取得
+	var id_name = event.dataTransfer.getData("text");
+	//id名からドラッグされた要素を取得
+	var drag_elm =document.getElementById(id_name);
+	//ドロップ先にドラッグされた要素を追加
+	event.currentTarget.appendChild(drag_elm);
+    //エラー回避のため、ドロップ処理の最後にdropイベントをキャンセルしておく
+	event.preventDefault();
+    syokuzai[i] = id_name; 
+    i++;
+}
+    
+    function data1(){
+        var x2 = syokuzai.join();
+        return x2;
+    }
+    
+    window.hogeLib= window.hogeLib|| {};
+    window.hogeLib.data1 = data1;
+</script>
+</head>
+<body>
+<br><br><br><br>
+<div id="dropbox" ondragover="f_dragover(event)" ondrop="f_drop(event)">
+</div>
+    <div id="dropbox" ondragover="f_dragover(event)" ondrop="f_drop(event)">
+</div>
+    <div id="dropbox" ondragover="f_dragover(event)" ondrop="f_drop(event)">
+</div>
+    <div id="dropbox" ondragover="f_dragover(event)" ondrop="f_drop(event)">
+</div>
+    
+<br><br><br><br>
+    <div id="fruits" ondragover="f_dragover(event)" ondrop="f_drop(event)">
+    <img src="pi-mann.png" id="ピーマン" alt="ぴーまん" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="apple.png" id="りんご" alt="りんご" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="bata-.png" id="バター" alt="ばたー" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="be-konn.png" id="ベーコン" alt="べーこん" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="burokkori-.png" id="ブロッコリー" alt="ブロッコリー" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="carrot.png" id="人参" alt="キャロット" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="chiken.png" id="鶏肉" alt="ちきん" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="hamu.png" id="ハム" alt="はむ" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="ketchup.png" id="ケチャップ" alt="けちゃっぷ" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="kyabetu.png" id="キャベツ" alt="きゃべつ" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="mayone-zu.png" id="マヨネーズ" alt="まよねーず" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="meat.png" id="牛肉" alt="にく" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="milk.png" id="牛乳" alt="ぎゅうにゅう" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="mushroom.png" id="マッシュルーム" alt="まっしゅるーむ" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="onion.png" id="玉ねぎ" alt="たまねぎ" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="paprika.png" id="パプリカ" alt="ぱぷりか" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="potato2.png" id="じゃがいも" alt="じゃがいも" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="potatp1.png" id="ポテト" alt="ぽてと" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="ebi.png" id="えび" alt="えび" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="retasu.png" id="レタス" alt="れたす" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="ti-zu.png" id="チーズ" alt="ちーず" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+    <img src="tomato.png" id="トマト" alt="とまと" draggable="true" ondragstart="f_dragstart(event)" width="100px" height="100px">
+
+</div>
+    
+    <style type="text/css">
+
+div {
+width: 530px;
+height: 120px;
+margin-bottom: 1.5em;
+background-color: #ffffff;
+border: 1px #c0c0c0 solid;
+color: #000000;
+}
+
+
+div.example2 {
+overflow-y: auto;
+}
+
+</style>
+</body>
+</html>
